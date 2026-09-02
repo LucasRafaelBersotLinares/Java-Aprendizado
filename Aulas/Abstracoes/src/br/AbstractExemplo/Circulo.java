@@ -1,0 +1,21 @@
+package br.AbstractExemplo;
+
+public class Circulo extends Formas {
+	private int raio;
+	private int x,y;
+	
+	public void setRaio(int raio) {
+		this.raio=raio;
+	}
+	
+	public void setXY(int x, int y) {
+		this.x=x;
+		this.y=y;
+	}
+	
+	@Override
+	public void draw() {
+		System.out.println("Desenhar Ciruculo Raio: " + raio + " X: " + x +" Y: " + y);
+	}
+	
+}
