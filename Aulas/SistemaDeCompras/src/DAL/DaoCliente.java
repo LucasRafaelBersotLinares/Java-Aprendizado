@@ -8,7 +8,6 @@ import Model.Cliente;
 public class DaoCliente {
 	List<Cliente> tabelaCliente= new ArrayList<Cliente>();
 	
-	//CRUD
 	public void Create(Cliente cliente) {
 		tabelaCliente.add(cliente);
 	}

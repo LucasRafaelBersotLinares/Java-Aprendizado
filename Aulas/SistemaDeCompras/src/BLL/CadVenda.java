@@ -26,11 +26,6 @@ public class CadVenda {
 		daoVenda.Delete(venda);
 	}
 	
-	public void UpdateVenda(Venda venda) {
-		daoVenda = new DaoVenda();
-		daoVenda.Update(venda);
-	}
-	
 	public List<Venda> ListarVendas() {
 		daoVenda = new DaoVenda();
 		return daoVenda.listar();

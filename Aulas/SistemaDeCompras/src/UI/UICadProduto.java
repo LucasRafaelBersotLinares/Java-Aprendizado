@@ -66,7 +66,7 @@ public class UICadProduto {
 		System.out.println("Deseja excluir o cliente?: (SIM | NÃO)");
 		String resposta=leitor.next();
 		
-		if(resposta == "S") return true;
+		if(resposta.equals("s")) return true;
 		return false;
 	}
 	
@@ -80,7 +80,6 @@ public class UICadProduto {
 	
 	public int buscarID() {
 		System.out.println("===Buscar Produto===");
-		listarProdutos(cadProduto.ListarProdutos());
 		Scanner leitor=new Scanner(System.in);
 		System.out.println("Digite o id do produto: "); int id = leitor.nextInt();
 		return id;

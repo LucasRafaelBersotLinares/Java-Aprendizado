@@ -66,7 +66,7 @@ public class UICadCliente {
 		System.out.println("Deseja excluir o cliente?: (SIM | NÃO)");
 		String resposta=leitor.next();
 		
-		if(resposta == "S") return true;
+		if(resposta.equals("S")) return true;
 		return false;
 	}
 	
@@ -80,7 +80,6 @@ public class UICadCliente {
 	
 	public int buscarID() {
 		System.out.println("===Buscar Cliente===");
-		listarClientes(cadCliente.ListarClientes());
 		Scanner leitor=new Scanner(System.in);
 		System.out.println("Digite o id do cliente a ser excluido: "); int id = leitor.nextInt();
 		return id;

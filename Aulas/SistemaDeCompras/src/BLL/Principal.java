@@ -21,6 +21,7 @@ public class Principal {
 		UICadVenda uivenda = new UICadVenda();
 		UIPrincipal uiprincipal = new UIPrincipal();
 		CadProduto produtos = new CadProduto();
+		CadCliente clientes = new CadCliente();
 		
 		
 		String op = "s";
@@ -32,27 +33,88 @@ public class Principal {
 					int eProduto =  uiprincipal.MenuProduto();
 					switch(eProduto) {
 						case 1:
-							Produto produto = uiproduto.cadastrarProduto();
-							produtos.CadastrarProduto(produto);
+							Produto pCadastro = uiproduto.cadastrarProduto();
+							produtos.CadastrarProduto(pCadastro);
 							break;
 						case 2:
 							uiproduto.listarProdutos(produtos.ListarProdutos());
 							break;
 						case 3:
+							uiproduto.listarProdutos(produtos.ListarProdutos());
+							int idA = uiproduto.buscarID();
+							Produto pAtualizar = produtos.BuscarProduto(idA);
+							pAtualizar = uiproduto.atualizarProduto(pAtualizar);
+							produtos.UpdateProduto(pAtualizar);
 							break;
 						case 4:
+							uiproduto.listarProdutos(produtos.ListarProdutos());
+							int idR = uiproduto.buscarID();
+							Produto pRemover = produtos.BuscarProduto(idR);
+							boolean confirm = uiproduto.removerProduto(pRemover);
+							if(confirm) {
+								produtos.RemoverProduto(pRemover);
+							}
 							break;
 						case 5:
+							int id = uiproduto.buscarID();
+							Produto pBusca = produtos.BuscarProduto(id);
+							uiproduto.mostrarProduto(pBusca);
 							break;
-						case 6:
+						case 0:
 							break;
 					}
 					break;
 				case 2:
 					int eVenda = uiprincipal.MenuVenda();
+					switch(eVenda) {
+						case 1:
+							uicliente.listarClientes(clientes.ListarClientes());
+							int idC = uicliente.buscarID();
+							Cliente cVenda = clientes.BuscarCliente(idC);
+							uivenda.abrirVenda(cVenda);
+							int eItens = uiprincipal.MenuItens();
+							switch(eItens) {
+								case 1:
+									break;
+							
+							}
+							break;
+					}
 					break;
 				case 3:
 					int eCliente = uiprincipal.MenuCliente();
+					switch(eCliente) {
+					case 1:
+						Cliente cCadastro = uicliente.cadastrarCliente();
+						clientes.CadastrarCliente(cCadastro);
+						break;
+					case 2:
+						uicliente.listarClientes(clientes.ListarClientes());
+						break;
+					case 3:
+						uicliente.listarClientes(clientes.ListarClientes());
+						int idA = uicliente.buscarID();
+						Cliente cAtualizar = clientes.BuscarCliente(idA);
+						cAtualizar = uicliente.atualizarCliente(cAtualizar);
+						clientes.UpdateCliente(cAtualizar);
+						break;
+					case 4:
+						uicliente.listarClientes(clientes.ListarClientes());
+						int idR = uicliente.buscarID();
+						Cliente cRemover = clientes.BuscarCliente(idR);
+						boolean confirm = uicliente.removerCliente(cRemover);
+						if(confirm) {
+							clientes.RemoverCliente(cRemover);
+						}
+						break;
+					case 5:
+						int id = uicliente.buscarID();
+						Cliente cBusca = clientes.BuscarCliente(id);
+						uicliente.mostrarCliente(cBusca);
+						break;
+					case 0:
+						break;
+				}
 					break;	
 				case 4:
 					System.out.println("Saindo do programa...");
@@ -70,21 +132,3 @@ public class Principal {
 	}
 
 }
-
-
-//Cadastro de Cliente;
-//CadCliente cadCliente=new CadCliente();
-//UICadCliente uiCliente= new UICadCliente();
-//
-//Cliente cliente=uiCliente.cadastrarCliente();
-//cadCliente.CadastrarCliente(cliente);
-//
-//Exclusao de cliente
-//int id = uiCliente.buscarID();
-//var resposta = uiCliente.removerCliente(cadCliente.BuscarCliente(id));
-//if(resposta)
-//	cadCliente.RemoverCliente(cliente);
-//
-//Atualizar de cliente
-//int idA = uiCliente.buscarID();
-//Cliente cliente = uiCliente.atualizarCliente(cadCliente.BuscarCliente(idA));
