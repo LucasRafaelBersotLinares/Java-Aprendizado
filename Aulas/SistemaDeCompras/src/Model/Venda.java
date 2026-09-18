@@ -40,4 +40,28 @@ public class Venda {
 		this.carrinho = carrinho;
 	}
 	
+	public void setItem(Item item) {
+		carrinho.add(item);
+	}
+	
+	public void AtualizarItem(Item item) {
+		Item itemBusca= BuscarItem(item.getId());
+		itemBusca.setId(item.getId());
+		itemBusca.setProduto(item.getProduto());
+		itemBusca.setQuantidade(item.getQuantidade());
+	}
+	
+	public void removerItem(Item item) {
+		carrinho.remove(item);
+	}
+	
+	public Item BuscarItem(int id) {
+		for(Item item:carrinho) {
+			if(item.getId() == id) {
+				return item;
+			}
+		}
+		return null;
+	}
+	
 }

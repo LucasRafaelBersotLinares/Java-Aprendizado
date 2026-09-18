@@ -4,12 +4,6 @@ public class Item {
 	private int id;
 	private Produto produto;
 	private int quantidade;
-	
-	Item(int id, Produto produto, int quantidade){
-		this.id = id;
-		this.produto = produto;
-		this.quantidade = quantidade;
-	}
 
 	public int getId() {
 		return id;

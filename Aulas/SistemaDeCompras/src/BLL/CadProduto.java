@@ -15,8 +15,8 @@ public class CadProduto {
 	}
 	
 	public Produto BuscarProduto(int id) {
-		Produto c=daoProduto.Recovery(id);
-		return c;
+		Produto p=daoProduto.Recovery(id);
+		return p;
 	}
 	
 	public void RemoverProduto(Produto produto) {

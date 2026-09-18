@@ -7,6 +7,7 @@ import java.util.Scanner;
 import BLL.CadVenda;
 import Model.Cliente;
 import Model.Item;
+import Model.Produto;
 import Model.Venda;
 
 public class UICadVenda {
@@ -28,6 +29,46 @@ public class UICadVenda {
 		return venda;
 	}
 	
+	public void listarVendas(List<Venda> venda){
+		System.out.println("========LISTA DE VENDAS========");
+		for(Venda v:venda) {
+			System.out.println("ID: "+v.getId()+" DATA: "+v.getData()+" CARRINHO: "+v.getCarrinho());
+		}
+		
+	}
+	
+	public boolean removerVenda(Venda venda) {
+		System.out.println("=========REMOVER VENDA=========");
+		
+		if(venda == null) {
+			System.out.println("Venda é igual a nulo");
+			return false;
+		}
+		
+		System.out.println("Venda a ser removido: ");
+		mostrarVenda(venda);
+		System.out.println("Deseja excluir a venda?: (SIM | NÃO)");
+		String resposta=leitor.next();
+		
+		if(resposta.equals("s")) return true;
+		return false;
+	}
+	
+	public void mostrarVenda(Venda venda) {
+		System.out.println("==========MOSTRAR VENDA==========");
+		System.out.println("ID: "+venda.getId());
+		System.out.println("DATA: "+venda.getData());
+		System.out.println("CARRINHO: "+venda.getCarrinho());
+		System.out.println("===================================");
+	
+	}
+	
+	public int buscarID() {
+		System.out.println("===Buscar Venda===");
+		Scanner leitor=new Scanner(System.in);
+		System.out.println("Digite o id da venda: "); int id = leitor.nextInt();
+		return id;
+	}
 	
 	
 }

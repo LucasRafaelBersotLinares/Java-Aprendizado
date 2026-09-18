@@ -6,6 +6,7 @@ import UI.UICadCliente;
 import UI.UICadProduto;
 import UI.UICadVenda;
 import UI.UIPrincipal;
+import UI.UIitem;
 import Model.Item;
 import Model.Cliente;
 import Model.Produto;
@@ -20,8 +21,10 @@ public class Principal {
 		UICadProduto uiproduto = new UICadProduto();
 		UICadVenda uivenda = new UICadVenda();
 		UIPrincipal uiprincipal = new UIPrincipal();
+		UIitem uiitem = new UIitem();
 		CadProduto produtos = new CadProduto();
 		CadCliente clientes = new CadCliente();
+		CadVenda vendas = new CadVenda();
 		
 		
 		String op = "s";
@@ -68,16 +71,69 @@ public class Principal {
 					int eVenda = uiprincipal.MenuVenda();
 					switch(eVenda) {
 						case 1:
+							int opI = 1;
 							uicliente.listarClientes(clientes.ListarClientes());
 							int idC = uicliente.buscarID();
 							Cliente cVenda = clientes.BuscarCliente(idC);
-							uivenda.abrirVenda(cVenda);
+							Venda venda = uivenda.abrirVenda(cVenda);
 							int eItens = uiprincipal.MenuItens();
-							switch(eItens) {
+							while(opI == 1) {
+								eItens = uiprincipal.MenuItens();
+								switch(eItens) {
 								case 1:
+									uiproduto.listarProdutos(produtos.ListarProdutos());
+									int idP = uiproduto.buscarID();
+									Produto pItem = produtos.BuscarProduto(idP);
+									Item item = uiitem.adicionarItem(pItem);
+									venda.setItem(item);
 									break;
-							
+								case 2:
+									uiitem.listarItens(venda.getCarrinho());
+									break;
+								case 3:
+									uiitem.listarItens(venda.getCarrinho());
+									int idI = uiitem.buscarItem();
+									Item itemAtualizar = venda.BuscarItem(idI);
+									uiproduto.listarProdutos(produtos.ListarProdutos());
+									int idPA = uiproduto.buscarID();
+									Produto pAItem = produtos.BuscarProduto(idPA);
+									itemAtualizar = uiitem.atualizarItem(itemAtualizar, pAItem);
+									venda.AtualizarItem(itemAtualizar);
+									break;
+								case 4:
+									uiitem.listarItens(venda.getCarrinho());
+									int idR = uiitem.buscarItem();
+									Item itemRemover = venda.BuscarItem(idR);
+									boolean confirm = uiitem.removerItem(itemRemover);
+									if(confirm) {
+										venda.removerItem(itemRemover);
+									}
+									break;
+								case 0:
+									break;
+								}
+								opI = uiprincipal.MenuContinuarItem();
 							}
+							vendas.CadastrarVenda(venda);
+							break;
+						case 2:
+							uivenda.listarVendas(vendas.ListarVendas());
+							break;
+						case 3:
+							uivenda.listarVendas(vendas.ListarVendas());
+							int idR = uivenda.buscarID();
+							Venda vRemover = vendas.BuscarVenda(idR);
+							boolean confirm = uivenda.removerVenda(vRemover);
+							if(confirm) {
+								vendas.RemoverVenda(vRemover);
+							}
+							break;
+						case 4:
+							int id = uivenda.buscarID();
+							Venda vendaB = vendas.BuscarVenda(id);
+							uivenda.mostrarVenda(vendaB);
+							break;
+						case 0:
 							break;
 					}
 					break;

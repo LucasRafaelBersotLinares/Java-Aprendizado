@@ -21,6 +21,11 @@ public class UIPrincipal {
 		return leitor.next();
 	}
 	
+	public int MenuContinuarItem() {
+		System.out.println("Deseja Fechar a Venda?: Sim (0) | Não (1)");
+		return leitor.nextInt();
+	}
+	
 	public int MenuCliente() {
 		System.out.println("=====GERENCIAR DE CLIENTE=====");
 		System.out.println(" Você tem escolha dessas operações:");
