@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import BLL.GerItem;
 import Model.Item;
 import Model.Produto;
 
 public class UIitem {
 	Scanner leitor= new Scanner(System.in);
+	GerItem regrasItens = new GerItem();
 	
 	public Item adicionarItem(Produto produto) {
 		System.out.println("========ADICIONAR ITEM========");
@@ -19,6 +21,11 @@ public class UIitem {
 		item.setId(produto.getId());
 		item.setProduto(produto);
 		item.setQuantidade(quantidade);
+		
+		if(regrasItens.Transacao(produto, item)) {
+			System.out.println("Produto possui quantidade menor que a inserida, apague essa venda e refaca ela.");
+			return null;
+		}
 		
 		return item;
 	}
