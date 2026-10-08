@@ -1,6 +1,9 @@
 package Collections;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,6 +16,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.*;
 
 public class Exemplos {
 
@@ -67,9 +71,14 @@ public class Exemplos {
 			System.out.println(item.getKey()+"<->"+item.getValue());
 		for(Integer key:nomesHashMap.keySet()) 
 			System.out.println(key+"<<->>"+nomesHashMap.get(key));
+		Map<Integer, String> mapaux= new HashMap();
 		nomesHashMap.forEach((key,value) -> {
 			System.out.println(key+" -> "+value);
+			if(key>1) {
+				mapaux.put(key, value);
+			}
 		});
+		nomesHashMap.keySet().removeAll(mapaux.keySet());
 		
 		Map<Integer, String> nomesTreeMap= new TreeMap();
 		nomesTreeMap.put(1, "Joao");
@@ -97,6 +106,19 @@ public class Exemplos {
 		
 		//===============
 		List<List<String>> listaS= new ArrayList();
+		
+		Deque<String> deque= new ArrayDeque();
+		deque.add("Joao");
+		deque.addFirst("Primeiro");
+		deque.add("Ultimo");
+	}
+	
+	public static void mostrar(Collection c) {
+		System.out.println("Iterador");
+		Iterator iter=c.iterator();
+		while(iter.hasNext()) {
+			System.out.println(""+iter.next());
+		}
 		
 		
 	}
